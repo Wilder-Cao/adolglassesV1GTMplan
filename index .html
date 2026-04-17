@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a豆智能音频眼镜V1 · 新品上市计划</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #4a4a4a;
+    --ink-muted: #888;
+    --bg: #f7f5f0;
+    --bg-card: #ffffff;
+    --accent: #1e3a5f;
+    --accent-warm: #c8521a;
+    --accent-light: #e8f0fa;
+    --rule: #d8d4cc;
+    --tag-blue: #e8f0fa;
+    --tag-blue-text: #1e3a5f;
+    --tag-warm: #fdf0e8;
+    --tag-warm-text: #c8521a;
+    --tag-green: #eaf5ee;
+    --tag-green-text: #1a6635;
+    --tag-red: #faeaea;
+    --tag-red-text: #b33030;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--accent);
+    color: #fff;
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 60px solid rgba(255,255,255,0.05);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    border: 30px solid rgba(255,255,255,0.04);
+  }
+  .cover-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cover-brand {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .cover-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .cover-sub {
+    font-size: 16px;
+    opacity: 0.65;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 24px;
+  }
+  .cover-meta-item label {
+    font-size: 11px;
+    opacity: 0.5;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* MAIN LAYOUT */
+  .doc-body {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 64px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-warm);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* CARDS GRID */
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+
+  .card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--rule);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .card-body {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 2px 3px 2px 0;
+  }
+  .tag-blue { background: var(--tag-blue); color: var(--tag-blue-text); }
+  .tag-warm { background: var(--tag-warm); color: var(--tag-warm-text); }
+  .tag-green { background: var(--tag-green); color: var(--tag-green-text); }
+  .tag-red { background: var(--tag-red); color: var(--tag-red-text); }
+
+  /* SELLING POINTS */
+  .sp-item {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 20px 24px;
+    border: 1px solid var(--rule);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .sp-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-warm);
+    min-width: 24px;
+    margin-top: 3px;
+  }
+  .sp-content {}
+  .sp-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .sp-desc {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+
+  /* SPEC TABLE */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    background: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .spec-table th {
+    background: var(--accent);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-weight: 500;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+  }
+  .spec-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .spec-table tr:last-child td { border-bottom: none; }
+  .spec-table tr:nth-child(even) td { background: #fafaf8; }
+  .spec-table .label { color: var(--ink-muted); width: 120px; font-size: 12.5px; }
+  .spec-table .highlight { color: var(--accent-warm); font-weight: 600; }
+
+  /* COMPETITIVE TABLE */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    background: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .comp-table th {
+    background: #2b2b2b;
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .comp-table th.our { background: var(--accent-warm); }
+  .comp-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    vertical-align: middle;
+    color: var(--ink-light);
+  }
+  .comp-table td.our { background: #fdf7f4; color: var(--ink); font-weight: 600; }
+  .comp-table td.label-col { text-align: left; color: var(--ink-muted); font-size: 12px; }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table tr:nth-child(even) td:not(.our) { background: #fafaf8; }
+  .yes { color: #1a6635; font-weight: 600; }
+  .no { color: #888; }
+  .na { color: #bbb; font-size: 11px; }
+
+  /* PERSONA */
+  .persona {
+    background: var(--bg-card);
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    padding: 20px 22px;
+  }
+  .persona-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .persona-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .persona-name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .persona-role {
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+  .persona-row {
+    font-size: 12.5px;
+    margin-bottom: 7px;
+  }
+  .persona-row span {
+    color: var(--ink-muted);
+    display: inline-block;
+    min-width: 56px;
+    font-size: 11.5px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 36px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-warm), var(--rule));
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -31px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    background: var(--accent);
+    z-index: 1;
+  }
+  .tl-dot.warm { background: var(--accent-warm); }
+  .tl-dot.gray { background: var(--rule); }
+  .tl-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-warm);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+  .tl-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .tl-body {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+  .tl-tags { margin-top: 8px; }
+
+  /* CHANNEL */
+  .channel-item {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+  }
+  .channel-item.warm { border-left-color: var(--accent-warm); }
+  .channel-item.green { border-left-color: #1a6635; }
+  .channel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .channel-name {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .channel-phase {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--tag-blue);
+    color: var(--tag-blue-text);
+    font-weight: 500;
+  }
+  .channel-phase.soon { background: var(--tag-warm); color: var(--tag-warm-text); }
+  .channel-desc {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+
+  /* MARKETING */
+  .mkt-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .mkt-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .mkt-content {}
+  .mkt-title { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+  .mkt-desc { font-size: 13px; color: var(--ink-light); line-height: 1.65; }
+
+  /* RISK */
+  .risk-item {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border: 1px solid var(--rule);
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+  }
+  .risk-level {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    height: fit-content;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .risk-high { background: var(--tag-red); color: var(--tag-red-text); }
+  .risk-mid { background: var(--tag-warm); color: var(--tag-warm-text); }
+  .risk-low { background: var(--tag-green); color: var(--tag-green-text); }
+  .risk-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .risk-desc { font-size: 13px; color: var(--ink-light); line-height: 1.65; }
+
+  /* OPPORTUNITY */
+  .opp-card {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 24px;
+  }
+  .opp-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    opacity: 0.9;
+  }
+  .opp-item {
+    font-size: 13px;
+    line-height: 1.65;
+    opacity: 0.8;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 10px;
+  }
+  .opp-item:last-child { border-bottom: none; }
+  .opp-item::before {
+    content: '→';
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  /* NOTE BOX */
+  .note {
+    background: #fffbf0;
+    border: 1px solid #f0e0a0;
+    border-left: 4px solid #c8a020;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #5a4a10;
+    margin: 16px 0;
+    line-height: 1.7;
+  }
+  .note strong { color: #8a6010; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--accent);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  /* PRICE BAND */
+  .price-band {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .price-main {
+    font-family: 'Space Mono', monospace;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .price-sub {
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+  .price-context { font-size: 13px; opacity: 0.75; line-height: 1.6; }
+
+  @media (max-width: 700px) {
+    .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .cover { padding: 40px 24px 36px; }
+    .cover-title { font-size: 28px; }
+    .doc-body { padding: 36px 20px; }
+    .cover-meta { flex-wrap: wrap; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">新品上市计划 · 2026</div>
+  <div class="cover-brand">华硕 ADOL · DCG001</div>
+  <div class="cover-title">a豆智能音频眼镜 V1</div>
+  <div class="cover-sub">墨镜款 / 半框款 / 墨绿色款 / 玳瑁色款 · 中国大陆市场</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <label>计划上市</label>
+      <span>2026年4月下旬—5月初</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>建议零售价</label>
+      <span>待定</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>目标用户</label>
+      <span>上班族 / 学生 / 近视 / 墨镜用户</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>文档版本</label>
+      <span>Draft v1.0</span>
+    </div>
+  </div>
+</div>
+
+<div class="doc-body">
+
+<!-- 01 产品概述 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">产品概述与核心卖点</span>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div>
+      <table class="spec-table">
+        <tr><th colspan="2">基本参数</th></tr>
+        <tr><td class="label">品牌/型号</td><td>华硕 ADOL · DCG001</td></tr>
+        <tr><td class="label">重量</td><td class="highlight">36–39g（不含镜片）</td></tr>
+        <tr><td class="label">电池</td><td>140mAh × 2（双腿）</td></tr>
+        <tr><td class="label">续航</td><td class="highlight">12h 音乐 / 5天待机</td></tr>
+        <tr><td class="label">蓝牙</td><td>BT 5.3，传输距离 10m+</td></tr>
+        <tr><td class="label">防护等级</td><td>IP54（防尘防水/防溅）</td></tr>
+        <tr><td class="label">充电</td><td>磁吸充电（约90min充满）</td></tr>
+        <tr><td class="label">操控</td><td>双触控板（音乐/电话/语音助手）</td></tr>
+        <tr><td class="label">AI接入</td><td class="highlight">豆包大模型（AI对话/AI翻译）</td></tr>
+        <tr><td class="label">跌落防护</td><td>1m 跌落抗性</td></tr>
+        <tr><td class="label">适配</td><td>Android 10+ / iOS 13+</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="price-band" style="margin-bottom:14px;">
+        <div>
+          <div class="price-main">待定</div>
+          <div class="price-sub">建议零售价（暂未确定）</div>
+        </div>
+        <div class="price-context">定价区间尚未最终确定。参考同类竞品分布（¥469–¥1699），a豆定位主流中端，最终价格待商务确认后更新。</div>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">款式线</div>
+        <div class="card-body">
+          <span class="tag tag-blue">墨镜款</span>
+          <span class="tag tag-blue">半框款</span>
+          <span class="tag tag-blue">墨绿色款</span>
+          <span class="tag tag-blue">玳瑁色款</span>
+          <div style="margin-top:8px;font-size:12.5px;color:var(--ink-muted);">支持定制近视镜片，4款镜框覆盖不同用户审美需求。<strong style="color:var(--accent-warm);">墨镜款</strong>为市面稀缺差异化款式。</div>
+        </div>
+      </div>
+      <div class="note">
+        <strong>🏛 国补申报进行中：</strong>一旦拿到资质，务必第一时间在京东自营及华硕商城页面标注国补信息，这将是强力价格刺激工具，建议提前准备好相应页面素材。
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:16px;font-weight:700;font-size:13px;color:var(--ink-muted);letter-spacing:0.05em;">六大核心卖点</div>
+
+  <div class="sp-item">
+    <div class="sp-num">01</div>
+    <div class="sp-content">
+      <div class="sp-title">极致轻量 + 个性化</div>
+      <div class="sp-desc">仅 36g 起（不加镜片），4款镜框覆盖不同场景需求；支持定制近视镜片，近视用户可直接替换日常眼镜。<span class="tag tag-warm" style="font-size:11px;">近视用户切入点</span></div>
+    </div>
+  </div>
+  <div class="sp-item">
+    <div class="sp-num">02</div>
+    <div class="sp-content">
+      <div class="sp-title">智能交互便捷</div>
+      <div class="sp-desc">双触控板操作（音乐 / 电话 / 语音助手），佩戴检测约2秒响应（戴上播放、取下暂停），操作零学习成本。</div>
+    </div>
+  </div>
+  <div class="sp-item">
+    <div class="sp-num">03</div>
+    <div class="sp-content">
+      <div class="sp-title">出色音频 + 通话降噪</div>
+      <div class="sp-desc">2个高灵敏度扬声器（86.5dB±3dB，20Hz–20KHz），双麦 ENC 通话降噪，BT5.3传输稳定；开放式设计保持对环境声的感知，通勤/骑行安全性更好。</div>
+    </div>
+  </div>
+  <div class="sp-item">
+    <div class="sp-num">04</div>
+    <div class="sp-content">
+      <div class="sp-title">续航与充电友好</div>
+      <div class="sp-desc">140mAh双腿电池，12小时音乐播放、5天待机；磁吸充电约90分钟充满，支持正反插，充电逻辑无负担。</div>
+    </div>
+  </div>
+  <div class="sp-item">
+    <div class="sp-num">05</div>
+    <div class="sp-content">
+      <div class="sp-title">全场景多适配</div>
+      <div class="sp-desc">IP54 防护（防尘防水溅）、1m 跌落抗性，适配通勤、运动、出游、商务等日常场景，无后顾之忧。</div>
+    </div>
+  </div>
+  <div class="sp-item">
+    <div class="sp-num">06</div>
+    <div class="sp-content">
+      <div class="sp-title">豆包大模型 AI 能力</div>
+      <div class="sp-desc">接入豆包大模型，支持 AI 对话 + AI 翻译，顺应当下 AI 穿戴热潮；在同价位产品中属于有竞争力的 AI 卖点。<span class="tag tag-green" style="font-size:11px;">热点加分项</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 竞品分析 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">市场竞品分析</span>
+  </div>
+
+  <div class="note" style="margin-bottom:20px;">
+    <strong>核心差异化发现：</strong>在当前主要竞品中，<strong>无厂商大力推广墨镜款式</strong>——这是 a豆 V1 的天然差异化窗口，建议将墨镜款作为视觉主打款式，在夏季场景营销中重点放大。
+  </div>
+
+  <div style="overflow-x:auto;">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;min-width:100px;">对比维度</th>
+          <th class="our">a豆 V1<br>（我们）</th>
+          <th>小米 MIJIA 2</th>
+          <th>雷神 Aura</th>
+          <th>李未可 Air</th>
+          <th>界环 AI</th>
+          <th>华为智能眼镜2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label-col">京东售价</td>
+          <td class="our">待定</td>
+          <td>¥999–1199</td>
+          <td>¥549–849</td>
+          <td>¥899–1199</td>
+          <td>¥599–999</td>
+          <td>¥1699</td>
+        </tr>
+        <tr>
+          <td class="label-col">重量（不含镜片）</td>
+          <td class="our">36–39g</td>
+          <td>27.6–32g</td>
+          <td>33g+</td>
+          <td>27–33g</td>
+          <td>26–31g</td>
+          <td>36.57g+</td>
+        </tr>
+        <tr>
+          <td class="label-col">续航（音乐）</td>
+          <td class="our">12h</td>
+          <td>12h</td>
+          <td>12h</td>
+          <td>14h</td>
+          <td>11h</td>
+          <td>11h</td>
+        </tr>
+        <tr>
+          <td class="label-col">AI 大模型</td>
+          <td class="our"><span class="yes">✓ 豆包</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="yes">✓</span></td>
+          <td><span class="yes">✓ 20模型</span></td>
+          <td><span class="yes">✓ 10+模型</span></td>
+          <td><span class="na">基础</span></td>
+        </tr>
+        <tr>
+          <td class="label-col">AI 翻译</td>
+          <td class="our"><span class="yes">✓</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="yes">✓</span></td>
+          <td><span class="yes">✓ 128种语言</span></td>
+          <td><span class="yes">✓</span></td>
+          <td><span class="yes">✓</span></td>
+        </tr>
+        <tr>
+          <td class="label-col">墨镜款</td>
+          <td class="our"><span class="yes">✓ 有</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="no">✗</span></td>
+        </tr>
+        <tr>
+          <td class="label-col">近视配镜服务</td>
+          <td class="our"><span class="yes">✓ 支持</span></td>
+          <td><span class="yes">✓ 自行配镜</span></td>
+          <td><span class="na">未知</span></td>
+          <td><span class="na">未知</span></td>
+          <td><span class="yes">✓ 一站式配镜</span></td>
+          <td><span class="yes">✓</span></td>
+        </tr>
+        <tr>
+          <td class="label-col">防水等级</td>
+          <td class="our">IP54</td>
+          <td>IP54</td>
+          <td>IP54</td>
+          <td>IP54</td>
+          <td>IP54</td>
+          <td>IP54</td>
+        </tr>
+        <tr>
+          <td class="label-col">线下渠道</td>
+          <td class="our"><span class="yes">✓ 强（智汇家体系）</span></td>
+          <td><span class="yes">✓ 小米之家</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="yes">部分眼镜店</span></td>
+          <td><span class="yes">✓ 强</span></td>
+        </tr>
+        <tr>
+          <td class="label-col">品牌背书</td>
+          <td class="our">华硕 ASUS（国际大厂）</td>
+          <td>小米（超强）</td>
+          <td>中小品牌</td>
+          <td>中小品牌</td>
+          <td>中小品牌</td>
+          <td>华为（超强）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-3" style="margin-top:20px;">
+    <div class="card">
+      <div class="card-icon">💪</div>
+      <div class="card-title">优势</div>
+      <div class="card-body">
+        价格低于多数对标竞品；华硕品牌可信度强；线下智汇家渠道覆盖广；墨镜款差异化明显；豆包 AI 接入顺应热点。
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <div class="card-title">劣势</div>
+      <div class="card-body">
+        镜腿不支持快拆换框（竞品多支持）；无双设备连接；无通知播报/查找眼镜；重量偏重（vs 界环26g款）；AI 能力深度弱于李未可。
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">核心定位建议</div>
+      <div class="card-body">
+        "华硕出品 · 首款墨镜智能音频眼镜"——主打<strong>墨镜款差异化</strong>，以品牌可信度 + 超强性价比突破市场，不与小米/华为硬碰品牌力。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 目标用户 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">目标用户画像</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="persona">
+      <div class="persona-head">
+        <div class="persona-avatar" style="background:#e8f0fa;">🧑‍💼</div>
+        <div>
+          <div class="persona-name">都市上班族 · 小林</div>
+          <div class="persona-role">25–35岁 / 北上广深 / 月收入8000+</div>
+        </div>
+      </div>
+      <div class="persona-row"><span>核心场景</span>通勤地铁/公交、咖啡馆办公、视频会议接听</div>
+      <div class="persona-row"><span>痛点</span>耳机容易丢/充电麻烦；戴耳机接电话尴尬；夏天墨镜+耳机装备太多</div>
+      <div class="persona-row"><span>购买动因</span>颜值 + 实用性 + 品牌信任感，愿为"酷且好用"的科技产品付费</div>
+      <div style="margin-top:10px;">
+        <span class="tag tag-blue">通勤场景</span>
+        <span class="tag tag-blue">AI翻译</span>
+        <span class="tag tag-warm">墨镜款</span>
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-head">
+        <div class="persona-avatar" style="background:#eaf5ee;">🧑‍🎓</div>
+        <div>
+          <div class="persona-name">在校学生 · 小雨</div>
+          <div class="persona-role">18–24岁 / 一二线城市高校 / 月可支配2000–5000</div>
+        </div>
+      </div>
+      <div class="persona-row"><span>核心场景</span>上课/自习听音乐、骑自行车、户外健身</div>
+      <div class="persona-row"><span>痛点</span>耳机容易被老师说；运动中耳机容易掉；价格敏感但爱追潮流单品</div>
+      <div class="persona-row"><span>购买动因</span>外观潮、AI功能酷、价格可接受，适合送礼/618促销节点</div>
+      <div style="margin-top:10px;">
+        <span class="tag tag-green">性价比敏感</span>
+        <span class="tag tag-blue">运动场景</span>
+        <span class="tag tag-warm">社交分享</span>
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-head">
+        <div class="persona-avatar" style="background:#fdf0e8;">👓</div>
+        <div>
+          <div class="persona-name">近视镜用户 · 老张</div>
+          <div class="persona-role">28–45岁 / 三四线城市也有覆盖 / 稳定收入</div>
+        </div>
+      </div>
+      <div class="persona-row"><span>核心场景</span>日常戴镜，不想额外携带耳机</div>
+      <div class="persona-row"><span>痛点</span>配眼镜贵，智能眼镜配近视镜片更贵；担心换框麻烦；不确定音质</div>
+      <div class="persona-row"><span>购买动因</span>支持配近视镜片是关键决策点，"一副眼镜=听歌+通话+AI"的便利诉求</div>
+      <div style="margin-top:10px;">
+        <span class="tag tag-blue">近视配镜服务</span>
+        <span class="tag tag-green">实用主义</span>
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-head">
+        <div class="persona-avatar" style="background:#faeaea;">😎</div>
+        <div>
+          <div class="persona-name">墨镜爱好者 · 阿超</div>
+          <div class="persona-role">22–38岁 / 户外 / 旅行 / 驾车 / 时尚圈</div>
+        </div>
+      </div>
+      <div class="persona-row"><span>核心场景</span>驾车出行、海边旅游、户外徒步、音乐节/活动</div>
+      <div class="persona-row"><span>痛点</span>夏天耳机+墨镜太热；普通墨镜只能遮光；想要更多功能但不想戴太多设备</div>
+      <div class="persona-row"><span>购买动因</span>墨镜款颜值优先，AI功能和音乐能力是加分项，差异化购买点</div>
+      <div style="margin-top:10px;">
+        <span class="tag tag-warm">墨镜款核心用户</span>
+        <span class="tag tag-blue">户外场景</span>
+        <span class="tag tag-green">差异化蓝海</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 上市节点 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">上市时间节点规划</span>
+  </div>
+
+  <div class="note" style="margin-bottom:20px;">
+    <strong>📌 说明：</strong>以下所有时间节点及计划内容<strong>均为待定</strong>，后续将根据实际情况调整。
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">T-2周（2026年4月上中旬）· 上市前准备期</div>
+      <div class="tl-title">渠道与内容就位</div>
+      <div class="tl-body">
+        完成京东自营店 SKU 上架（含详情页、主图、A+页面）；华硕商城产品页面审核上线；渠易宝 A+优选资质确认；线下智汇家直营5家门店完成培训 + 上架陈列；制作核心产品短视频（墨镜款 & 半框款各1条）；KOL/KOC 发送测评样机（建议提前2周）。
+      </div>
+      <div class="tl-tags">
+        <span class="tag tag-blue">渠道准备</span>
+        <span class="tag tag-blue">内容备货</span>
+        <span class="tag tag-blue">线下培训</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot warm"></div>
+      <div class="tl-time">T0（2026年4月下旬）· 正式上市日</div>
+      <div class="tl-title">🚀 多渠道同步开售</div>
+      <div class="tl-body">
+        京东自营、华硕商城、渠易宝 A+优选同步开售；智汇家直营5家同步到货；官方微博/微信/抖音发布上市宣传内容；KOL 开箱测评视频同步发布（B站、抖音、小红书）；首销期建议做限时优惠或赠品活动（如：首销价/赠眼镜盒/配件）。
+      </div>
+      <div class="tl-tags">
+        <span class="tag tag-warm">正式开售</span>
+        <span class="tag tag-warm">KOL引爆</span>
+        <span class="tag tag-warm">首销活动</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">T+2周（2026年5月上旬）· 扩量期</div>
+      <div class="tl-title">渠道扩量 · 口碑建立</div>
+      <div class="tl-body">
+        体验店（50家）完成备货上架；京东搜索广告/信息流广告启动；收集初批用户真实评价，优化商品详情页和 FAQ；关注竞品动态，如发现打压动作及时调整定价策略；抖音/小红书 UGC 种草内容持续运营。
+      </div>
+      <div class="tl-tags">
+        <span class="tag tag-blue">渠道扩容</span>
+        <span class="tag tag-blue">口碑运营</span>
+        <span class="tag tag-blue">广告投放</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">T+4–6周（2026年5月中旬—6月初）· 推广强化期</div>
+      <div class="tl-title">冲刺618大促准备</div>
+      <div class="tl-body">
+        甄选店（100家四六线城市）上架，覆盖下沉市场近视用户；启动 618 大促预热，配合京东/天猫平台活动报名；推出"近视用户专属"配镜服务宣传；国补资质一旦获批立即在全渠道标注，配合优惠放大转化。
+      </div>
+      <div class="tl-tags">
+        <span class="tag tag-green">下沉市场</span>
+        <span class="tag tag-green">618预热</span>
+        <span class="tag tag-green">国补落地</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot gray"></div>
+      <div class="tl-time">T+2–3个月（持续推进）· 渠道拓展期</div>
+      <div class="tl-title">新渠道开拓计划</div>
+      <div class="tl-body">
+        逐步开拓传统光学眼镜店、墨镜专卖店、饰品连锁店等新渠道；针对不同渠道制定差异化的陈列/培训/利润方案；结合线下渠道特性（眼镜店），提供"一站式近视配镜 + 智能升级"的服务组合。
+      </div>
+      <div class="tl-tags">
+        <span class="tag tag-blue">眼镜店渠道</span>
+        <span class="tag tag-blue">墨镜店渠道</span>
+        <span class="tag tag-blue">饰品店渠道</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 渠道策略 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <span class="section-title">渠道策略</span>
+  </div>
+
+  <div style="margin-bottom:16px;font-size:13px;color:var(--ink-muted);">渠道优先级：以线上电商引爆曝光，以线下智汇家体系做体验与信任背书，中期逐步渗透垂直场景渠道。</div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div class="channel-item">
+      <div class="channel-head">
+        <div class="channel-name">🛒 京东自营旗舰店</div>
+        <div class="channel-phase">首发主渠道</div>
+      </div>
+      <div class="channel-desc">最重要的线上首发阵地。建议开售即申报京东 Plus 会员专属价，配合京东搜索广告（核心词：智能音频眼镜、蓝牙眼镜、AI眼镜）精准拦截搜索用户。详情页需重点突出"华硕出品"品牌背书和"墨镜款差异化"视觉。</div>
+    </div>
+
+    <div class="channel-item warm">
+      <div class="channel-head">
+        <div class="channel-name">🏠 华硕智汇家线下门店体系</div>
+        <div class="channel-phase">体验核心</div>
+      </div>
+      <div class="channel-desc">
+        <strong>直营店5家（首批）：</strong>优先体验试戴，导购培训重点讲解产品差异化和墨镜款卖点，可作为重点城市线下秀场。<br>
+        <strong>体验店50家（T+2周）：</strong>完成标准陈列后同步上架，维持库存周转。<br>
+        <strong>甄选店100家（四六线城市）：</strong>主攻近视用户群体，重点宣传配镜服务。<br>
+        <strong>星级门店1000+：</strong>考虑是否纳入销售，需评估单店动销能力后决策。
+      </div>
+    </div>
+
+    <div class="channel-item">
+      <div class="channel-head">
+        <div class="channel-name">📦 渠易宝 A+ 优选</div>
+        <div class="channel-phase">首发同步</div>
+      </div>
+      <div class="channel-desc">与京东自营同步上线，作为渠道补充。注意确保渠道价格统一，避免出现比京东自营价更低的情况影响价盘稳定。</div>
+    </div>
+
+    <div class="channel-item">
+      <div class="channel-head">
+        <div class="channel-name">🌐 华硕商城（官网）</div>
+        <div class="channel-phase">首发同步</div>
+      </div>
+      <div class="channel-desc">作为品牌形象窗口，适合用来做详细的产品展示、测评文章引流；建议与京东自营联动促销，商城可提供独家赠品活动吸引品牌粉丝。</div>
+    </div>
+
+    <div class="channel-item green">
+      <div class="channel-head">
+        <div class="channel-name">👓 传统光学眼镜店 / 墨镜店 / 饰品店</div>
+        <div class="channel-phase soon">中期拓展</div>
+      </div>
+      <div class="channel-desc">
+        <strong>光学眼镜店：</strong>契合度最高，可主打"配近视镜升级为智能眼镜"服务，与配镜流程结合，门店返利模式吸引合作。<br>
+        <strong>墨镜专卖店：</strong>打通墨镜用户场景，夏季上市时间恰好契合墨镜消费旺季。<br>
+        <strong>饰品连锁：</strong>覆盖年轻女性群体，玳瑁色款可作为主推款，与彩妆/配件联名展示。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 营销建议 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <span class="section-title">营销传播建议</span>
+  </div>
+
+  <div class="note" style="margin-bottom:24px;">
+    <strong>营销核心主张建议：</strong>"这个夏天，墨镜也能听歌打电话了"——以夏季墨镜使用场景为切入点，结合 AI 智能能力，打造有画面感的传播核心语。
+  </div>
+
+  <div style="margin-bottom:20px;">
+    <div class="mkt-row">
+      <div class="mkt-icon-box" style="background:#e8f0fa;">📱</div>
+      <div class="mkt-content">
+        <div class="mkt-title">小红书种草（重点平台）</div>
+        <div class="mkt-desc">小红书是墨镜/时尚/科技穿戴类目的核心种草阵地，建议发布前2周开始铺内容。重点方向：①墨镜穿搭 + 智能眼镜；②近视用户实测体验；③通勤一天只带这一件装备。目标：上市时已有100+相关笔记，形成搜索词覆盖。</div>
+      </div>
+    </div>
+    <div class="mkt-row">
+      <div class="mkt-icon-box" style="background:#fdf0e8;">🎬</div>
+      <div class="mkt-content">
+        <div class="mkt-title">抖音短视频（流量引爆）</div>
+        <div class="mkt-desc">上市首周投入抖音 DOU+ 加热核心视频，重点素材：①"摘下耳机 换上a豆"前后对比；②墨镜款夏日出游vlog；③AI 翻译 / AI 对话实测体验。配合 #a豆智能眼镜 话题互动。建议合作3–5个数码穿戴类中腰部达人（50万–500万粉）。</div>
+      </div>
+    </div>
+    <div class="mkt-row">
+      <div class="mkt-icon-box" style="background:#eaf5ee;">📺</div>
+      <div class="mkt-content">
+        <div class="mkt-title">B站评测（口碑建立）</div>
+        <div class="mkt-desc">B站是数码产品信任度背书最重要的平台之一。上市前1–2周送测B站数码/科技区UP主，重点选择有智能穿戴测评经验的中腰部UP（100万以下粉丝，性价比更高）。测评内容重点覆盖：音质、续航、AI 能力真实表现、与竞品对比。</div>
+      </div>
+    </div>
+    <div class="mkt-row">
+      <div class="mkt-icon-box" style="background:#faeaea;">🎯</div>
+      <div class="mkt-content">
+        <div class="mkt-title">京东站内广告（精准转化）</div>
+        <div class="mkt-desc">开售同步启动京东搜索直通车，重点词：蓝牙眼镜、智能眼镜、音频眼镜、AI眼镜、近视智能眼镜、墨镜耳机。同时在竞品词（雷神眼镜/李未可眼镜）旁做展示抢量。配合 618 活动页面报名和京东秒杀申报。</div>
+      </div>
+    </div>
+    <div class="mkt-row">
+      <div class="mkt-icon-box" style="background:#f0e8fa;">🌞</div>
+      <div class="mkt-content">
+        <div class="mkt-title">夏季场景营销（差异化战略）</div>
+        <div class="mkt-desc">上市时间2026年4月下旬–5月初，正好切入夏季消费前夕。墨镜款是夏日场景专属产品，建议打造"夏日装备指南"系列内容：海边/露营/音乐节 + a豆墨镜款。618 大促期间可联合旅行/户外类账号做联合推广，覆盖度假/出行场景用户。</div>
+      </div>
+    </div>
+    <div class="mkt-row">
+      <div class="mkt-icon-box" style="background:#e8f5ea;">🎓</div>
+      <div class="mkt-content">
+        <div class="mkt-title">学生用户渗透</div>
+        <div class="mkt-desc">5–6月学生季，可联合校园社团/大学生博主在微博、小红书做"毕业礼物推荐"等节点营销。京东校园专区申报，配合优惠券策略覆盖价格敏感学生群。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 风险与机会 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <span class="section-title">风险提示与市场机会</span>
+  </div>
+
+  <div style="margin-bottom:12px;font-weight:700;font-size:13px;color:var(--ink-muted);">主要风险</div>
+
+  <div class="risk-item">
+    <div class="risk-level risk-high">高</div>
+    <div>
+      <div class="risk-title">竞品降价跟进</div>
+      <div class="risk-desc">小米、华为等品牌有极强的价格竞争能力，一旦感受到销售压力可能快速降价反击。建议提前制定价格底线和应对方案，同时强化差异化（墨镜款、近视配镜服务）而非单纯打价格战。</div>
+    </div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-level risk-high">高</div>
+    <div>
+      <div class="risk-title">功能短板被放大（无快拆、无双设备连接）</div>
+      <div class="risk-desc">测评类内容中，竞品功能对比可能暴露 a豆 V1 的功能缺失（无通知播报、无查找眼镜、无双设备连接等）。建议提前在详情页和官方测评中主动说明产品定位（轻量入门），用"低价高质音频核心体验"逻辑抢先占据用户心智。</div>
+    </div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-level risk-mid">中</div>
+    <div>
+      <div class="risk-title">国补申报未能及时落地</div>
+      <div class="risk-desc">若国补资质未能在618前拿到，将失去一个重要的价格刺激节点。建议提前与平台运营和供应链团队确认申报进度，设立 deadline，确保不晚于5月底拿到资质。</div>
+    </div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-level risk-mid">中</div>
+    <div>
+      <div class="risk-title">渠道价格乱象</div>
+      <div class="risk-desc">多渠道并行（京东自营+渠易宝+商城+线下）容易出现价格混乱，损害品牌和渠道商利益。建议制定清晰的渠道价格政策，明确最低零售价（MAP）并签署协议，定期监控。</div>
+    </div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-level risk-low">低</div>
+    <div>
+      <div class="risk-title">线下门店库存积压</div>
+      <div class="risk-desc">尤其是四六线城市甄选店，如果销售不及预期可能造成库存积压。建议初期采用"先少量试投、数据好再补货"策略，避免一次性铺货过多。</div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="opp-card">
+      <div class="opp-title">💡 市场机会点</div>
+      <div class="opp-item">墨镜款细分市场蓝海——目前无主要竞品大力布局，先发优势窗口期约3–6个月</div>
+      <div class="opp-item">近视用户群体庞大（中国约5–6亿近视人口），配镜渗透率极低，增量空间巨大</div>
+      <div class="opp-item">AI 穿戴热度持续攀升，AI眼镜品类正处于教育市场→普及的关键节点</div>
+      <div class="opp-item">华硕品牌在数码用户中有稳固信任基础，有助于降低用户决策门槛</div>
+      <div class="opp-item">夏季（5–8月）是墨镜消费旺季，上市时间恰到好处</div>
+    </div>
+    <div class="card" style="padding:22px 24px;">
+      <div style="font-weight:700;font-size:14px;margin-bottom:12px;color:var(--ink);">📋 待确认事项清单</div>
+      <div style="font-size:13px;color:var(--ink-light);line-height:2;">
+        ☐ 国补申报进度 &amp; 预计获批时间<br>
+        ☐ 渠道统一最低零售价（MAP）<br>
+        ☐ 线上首发活动方案（赠品/折扣形式）<br>
+        ☐ KOL 合作名单 &amp; 样机寄送计划<br>
+        ☐ 近视配镜合作方案（配合门店）<br>
+        ☐ 618 平台活动报名截止时间<br>
+        ☐ 营销预算规模确定后广告排期<br>
+        ☐ 新渠道（眼镜店/墨镜店）开拓时间表<br>
+        ☐ a豆智能音频眼镜V1 加入华硕体系门店出样管理资质准备
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end doc-body -->
+
+<div class="footer">
+  a豆智能音频眼镜V1 · 新品上市计划 · Draft v1.0 · 2026 · 华硕 ADOL<br>
+  本文件为内部工作文档，请勿对外传播
+</div>
+
+</body>
+</html>
